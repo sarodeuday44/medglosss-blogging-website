@@ -1,0 +1,65 @@
+basic instructions those who wants to run this project in their system 
+
+
+## Installation
+
+Install using PIP: `Pip Install -ur Requirements.txt`
+
+
+
+`bin` Directory is in the` linux` environment using `nginx` +` gunicorn` + `Virtualenv` +` supervisor` to deploy script and `nginx` configuration file
+
+
+## Run
+
+ Modify `Medgloss / Setting.py` Modify the database configuration, as shown below:
+
+`` `python
+Databases = {
+    'Default': {
+        'Engine': 'Django.db.backends.mysql',
+        'Name': 'medblog',
+        'User': 'root',
+        'Password': 'Password',
+        'Host': 'Host',
+        'Port': 3306,
+    }
+}
+`` `
+
+### Creating a database
+Implementation in the mysql database:
+`` `SQL
+Create Database `medblog` / *! 40100 Default Character Set UTF8MB4 Collate UTF8MB4_UNICODE_CI * /
+`` `
+
+Then execute under the terminal:
+`` ``
+./manage.py makemigrations
+./manage.py migrate
+
+
+### Creating a super user
+
+ Under the terminal:
+`` ``
+./manage.py createSuperuser
+`` `
+
+### Create test data
+Under the terminal:
+`` ``
+./manage.py create_testdata
+`` `
+
+### Collect static files
+Under the terminal:
+`` ``
+./manage.py collectionstatic --noinput
+./manage.py compress --force
+`` `
+
+### start operation:
+Perform: `./manage.py runserver`
+
+
